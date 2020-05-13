@@ -1,4 +1,4 @@
-package hr.tvz.suio.dao;
+package hr.tvz.suio.app.dao;
 
 public class Repository {
 
