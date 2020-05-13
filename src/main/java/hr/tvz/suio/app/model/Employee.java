@@ -1,4 +1,4 @@
-package hr.tvz.suio.model;
+package hr.tvz.suio.app.model;
 
 import java.util.Date;
 import javax.persistence.Entity;
