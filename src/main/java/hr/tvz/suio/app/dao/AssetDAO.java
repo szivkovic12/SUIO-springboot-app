@@ -9,10 +9,12 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import hr.tvz.suio.app.model.Asset;
 
 @Transactional
+@Repository
 public interface AssetDAO extends JpaRepository<Asset, Long>{
 	AssetDTO findById(Integer id);
 	Optional<AssetDTO> findBySerialNumber(String serialNumber);
