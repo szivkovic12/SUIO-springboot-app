@@ -2,9 +2,12 @@ package hr.tvz.suio.app.dao;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import hr.tvz.suio.app.model.Type;
 
 @Service
 public class TypeServiceImpl implements TypeService{
@@ -14,32 +17,32 @@ public class TypeServiceImpl implements TypeService{
 
 	@Override
 	public List<TypeDTO> getAllTypes() {
-		// TODO Auto-generated method stub
-		return null;
+		return typeDAO.findAll().stream().map(this::mapTypeToDTO).collect(Collectors.toList());
 	}
 
 	@Override
-	public Optional<TypeDTO> createType() {
-		// TODO Auto-generated method stub
-		return null;
+	public void createType(Type type) {
+		typeDAO.save(type);
 	}
 
 	@Override
-	public Optional<TypeDTO> updateType() {
-		// TODO Auto-generated method stub
-		return null;
+	public void updateType(Type type, Long id) {
+		typeDAO.updateTypeById(type.getName(), id);
 	}
 
 	@Override
 	public Optional<TypeDTO> findById(Long id) {
-		// TODO Auto-generated method stub
-		return null;
+		return typeDAO.findById(id).map(this::mapTypeToDTO);
 	}
 
 	@Override
 	public void deleteById(Long id) {
-		// TODO Auto-generated method stub
+		typeDAO.deleteById(id);
 		
+	}
+	
+	private TypeDTO mapTypeToDTO(Type type) {
+		return new TypeDTO(type.getName());
 	}
 
 }

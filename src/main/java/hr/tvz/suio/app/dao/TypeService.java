@@ -5,12 +5,14 @@ import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
+import hr.tvz.suio.app.model.Type;
+
 @Service
 public interface TypeService {
 
 	List<TypeDTO> getAllTypes();
-	Optional<TypeDTO> createType();
-	Optional<TypeDTO> updateType();
+	void createType(Type type);
+	void updateType(Type type, Long id);
 	Optional<TypeDTO> findById(Long id);
 	void deleteById(Long id);
 
