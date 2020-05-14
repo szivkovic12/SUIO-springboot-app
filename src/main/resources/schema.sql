@@ -49,12 +49,3 @@ create table if not exists employee_asset (
     constraint fk_course foreign key (asset_id) references asset(id)
 );
 
-
-
-create table if not exists employee_asset (
-    id identity auto_increment,
-    employee_id bigint,
-    asset_id bigint,
-    constraint fk_student foreign key (employee_id) references employee(id),
-    constraint fk_course foreign key (asset_id) references asset(id)
-);
