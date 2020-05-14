@@ -27,21 +27,16 @@ public class AssetServiceImpl implements AssetService{
 		return assetDAO.findBySerialNumber(serialNumber);
 	}
 
-	private AssetDTO mapAssetToDTO(Asset asset) {
-		return new AssetDTO(
-				asset.getName(), 
-				asset.getSerialNumber(), 
-				asset.getProductNumber(),
-				asset.getTypeId(),
-				asset.getDateOfPurchase(),
-				asset.getInventoryNumber(), 
-				asset.getStatus(), 
-				asset.getDateOfDisposal());
-	}
-
 	@Override
 	public void updateAsset(Long id, AssetDTO asset) {
-		assetDAO.updateAssetById(asset.getName(), asset.getSerialNumber(), asset.getProductNumber(), asset.getTypeId(), asset.getDateOfPurchase(), asset.getInventoryNumber(), asset.getStatus(), asset.getDateOfDisposal(), id);
+		assetDAO.updateAssetById(asset.getName(), 
+								 asset.getSerialNumber(), 
+								 asset.getProductNumber(), 
+								 asset.getTypeId(), 
+								 asset.getDateOfPurchase(), 
+								 asset.getInventoryNumber(), 
+								 asset.getStatus(), 
+								 asset.getDateOfDisposal(), id);
 	}
 
 	@Override
@@ -58,5 +53,16 @@ public class AssetServiceImpl implements AssetService{
 	public void deleteAsset(Long id) {
 		assetDAO.deleteById(id);
 		
+	}
+	private AssetDTO mapAssetToDTO(Asset asset) {
+		return new AssetDTO(
+				asset.getName(), 
+				asset.getSerialNumber(), 
+				asset.getProductNumber(),
+				asset.getTypeId(),
+				asset.getDateOfPurchase(),
+				asset.getInventoryNumber(), 
+				asset.getStatus(), 
+				asset.getDateOfDisposal());
 	}
 }
