@@ -8,10 +8,12 @@ import javax.transaction.Transactional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
 
 import hr.tvz.suio.app.model.Type;
 
 @Transactional
+@Repository
 public interface TypeDAO extends JpaRepository<Type, Long>{
 
 		List<Type> findAll();
