@@ -56,6 +56,7 @@ public class AssetServiceImpl implements AssetService{
 	}
 	private AssetDTO mapAssetToDTO(Asset asset) {
 		return new AssetDTO(
+				asset.getId(),
 				asset.getName(), 
 				asset.getSerialNumber(), 
 				asset.getProductNumber(),
