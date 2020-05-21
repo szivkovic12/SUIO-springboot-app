@@ -7,7 +7,7 @@ public class EmployeeDTO {
 	
 	
 
-
+	private Long id;
 	private String name;
 	private String surname;
 	private String oib;
@@ -17,8 +17,9 @@ public class EmployeeDTO {
 	private Integer role;
 	private Date date_of_employment;
 	
-	public EmployeeDTO(String name, String surname, String oib, String email, Date date_of_birth,
+	public EmployeeDTO(Long id,String name, String surname, String oib, String email, Date date_of_birth,
 			Integer department, Integer role, Date date_of_employment) {
+		this.id=id;
 		this.name=name;
 		this.surname=surname;
 		this.oib=oib;

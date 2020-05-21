@@ -45,7 +45,7 @@ public class EmployeeServiceImpl implements EmployeeService{
 	}
 
 	private EmployeeDTO mapEmployeeToDTO(Employee employee) {
-		return new EmployeeDTO(employee.getName(), employee.getSurname(), employee.getOib(),employee.getEmail(),
+		return new EmployeeDTO(employee.getId(),employee.getName(), employee.getSurname(), employee.getOib(),employee.getEmail(),
 		employee.getDate_of_birth(),employee.getDepartment(), employee.getRole(), employee.getDate_of_employment());
 	}	
 	

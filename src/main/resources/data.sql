@@ -7,6 +7,13 @@ delete from type;
 
 insert into employee(id,name,surname,oib,email,date_of_birth,department_id,role_id, date_of_employment)
 values(1,'Stjepan','Zivkovic','70705544242','szivk@tvz.hr',NOW(),1,2, NOW());
+	
+insert into employee(id,name,surname,oib,email,date_of_birth,department_id,role_id, date_of_employment)
+values(2,'Miroslav','Vranic','67678811221','miro@tvz.hr',NOW(),1,2, NOW());
+
+insert into employee(id,name,surname,oib,email,date_of_birth,department_id,role_id, date_of_employment)
+values(3,'Tin','Topolovec','98765432112','tin@tvz.hr',NOW(),1,2, NOW());
+
 
 insert into department(id,name)
 values (1,'IT');
