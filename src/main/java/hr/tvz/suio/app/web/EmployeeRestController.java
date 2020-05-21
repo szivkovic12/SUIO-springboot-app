@@ -20,6 +20,8 @@ import hr.tvz.suio.app.dao.EmployeeDTO;
 import hr.tvz.suio.app.dao.EmployeeService;
 import hr.tvz.suio.app.model.Employee;
 
+
+
 @RestController
 @RequestMapping("employee")
 @CrossOrigin(origins="http://localhost:4200")
@@ -50,7 +52,7 @@ public class EmployeeRestController {
 	}
 	
 	@ResponseStatus(HttpStatus.CREATED)
-	@PostMapping("/add")
+	@PostMapping
 	public void createEmployee(@RequestBody Employee employee){
 		employeeService.createEmployee(employee);
 		
