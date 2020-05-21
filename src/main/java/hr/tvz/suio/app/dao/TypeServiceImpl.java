@@ -42,7 +42,7 @@ public class TypeServiceImpl implements TypeService{
 	}
 	
 	private TypeDTO mapTypeToDTO(Type type) {
-		return new TypeDTO(type.getName());
+		return new TypeDTO(type.getId(), type.getName());
 	}
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import hr.tvz.suio.app.dao.TypeDTO;
 import hr.tvz.suio.app.dao.TypeService;
 import hr.tvz.suio.app.model.Type;
 
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 @RequestMapping("type")
 public class TypeRestController {
@@ -36,17 +38,20 @@ public class TypeRestController {
 	}
 	
 	@PostMapping("/add")
-	public void newType(@RequestBody Type type) {
+	public List<TypeDTO> newType(@RequestBody Type type) {
 		typeService.createType(type);
+		return typeService.getAllTypes();
 	}
 	
 	@PutMapping("/update/{id}")
-	public void updateType(@PathVariable Long id, @RequestBody Type type) {
+	public List<TypeDTO> updateType(@PathVariable Long id, @RequestBody Type type) {
 		typeService.updateType(type, id);
+		return typeService.getAllTypes();
 	}
 	
 	@DeleteMapping("/delete/{id}")
-	public void deleteType(@PathVariable Long id) {
+	public List<TypeDTO> deleteType(@PathVariable Long id) {
 		typeService.deleteById(id);
+		return typeService.getAllTypes();
 	}
 }
