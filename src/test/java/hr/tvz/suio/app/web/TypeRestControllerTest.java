@@ -1,6 +1,8 @@
 package hr.tvz.suio.app.web;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
+import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
@@ -36,7 +38,13 @@ class TypeRestControllerTest {
 		
 	@Test
 	void testGetAllTypes() throws Exception {
-		this.mockMvc.perform(get("/type"))
+		this.mockMvc.perform(
+				get("/type")
+				.with(user("admin")
+				.password("test")
+				.roles("ADMIN"))
+				.with(csrf())
+				)
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 		.andExpect(jsonPath("$.length()", is(3))); //hasSize(3)_meni_ne_radi
@@ -44,13 +52,18 @@ class TypeRestControllerTest {
 		//assertEquals(1, typeService.getAllTypes().size());
 		
 	}
-
+	
 	@Test
 	void testGetTypeById() throws Exception {
 		Long test_id = (long) 1;
 		String test_name = "Laptop";
 		
-		this.mockMvc.perform(get("/type/"+test_id))
+		this.mockMvc.perform(get("/type/"+test_id)
+				.with(user("admin")
+						.password("test")
+						.roles("ADMIN"))
+						.with(csrf())
+						)
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
 		.andExpect(jsonPath("$.id").value(test_id))
@@ -65,6 +78,10 @@ class TypeRestControllerTest {
 		Type type = new Type(TEST_ID, TEST_NAME);
 		
 		this.mockMvc.perform(post("/type")
+				.with(user("admin")
+						.password("test")
+						.roles("ADMIN"))
+						.with(csrf())						
 				.content(objectMapper.writeValueAsString(type))
 				.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk());
