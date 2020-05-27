@@ -37,7 +37,7 @@ public class TypeRestController {
 		return typeService.findById(id);
 	}
 	
-	@PostMapping("/add")
+	@PostMapping
 	public List<TypeDTO> newType(@RequestBody Type type) {
 		typeService.createType(type);
 		return typeService.getAllTypes();
