@@ -13,7 +13,7 @@ public class Asset {
 	private Long id;
 	
 	private String name;
-	
+	asdfasdf
 	@Column(name="SERIAL_NUMBER")
 	private String serialNumber;
 	
