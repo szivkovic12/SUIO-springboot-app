@@ -19,9 +19,10 @@ import hr.tvz.suio.app.dao.TypeDTO;
 import hr.tvz.suio.app.dao.TypeService;
 import hr.tvz.suio.app.model.Type;
 
-@CrossOrigin(origins="http://localhost:4200")
+
 @RestController
 @RequestMapping("type")
+@CrossOrigin(origins="http://localhost:4200")
 public class TypeRestController {
 	
 	@Autowired
@@ -41,6 +42,7 @@ public class TypeRestController {
 	public List<TypeDTO> newType(@RequestBody Type type) {
 		typeService.createType(type);
 		return typeService.getAllTypes();
+		//return httspStuts.crated treba doraditi ovu metodu
 	}
 	
 	@PutMapping("/update/{id}")

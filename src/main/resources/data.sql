@@ -28,7 +28,13 @@ insert into asset(id,name,serial_number,product_number,type_id,date_of_purchase,
 values(1,'LENOVO','123456','654321', 1, NOW(),'111554','1', NOW());
 
 insert into type(id,name)
-values(1,'laptop');
+values(1,'Laptop');
+insert into type(id,name)
+values(2,'Mobitel');
+insert into type(id,name)
+values(3,'Tablet');
+
+
 
 insert into employee_asset(employee_id,asset_id)
 values (1,1);
