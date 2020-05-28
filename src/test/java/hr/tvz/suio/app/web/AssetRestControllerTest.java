@@ -45,10 +45,10 @@ class AssetRestControllerTest {
 
 	@Test
 	void testGetAssets() throws Exception {
-		mock.perform(get("/assets").with(user("admin").password("test").roles("Admin")).with(csrf()))
+		this.mock.perform(get("/assets").with(user("admin").password("test").roles("Admin")).with(csrf()))
 		.andExpect(status().isOk())
 		.andExpect(content().contentType(MediaType.APPLICATION_JSON))
-		.andExpect(jsonPath("$.length()", is(2)));
+		.andExpect(jsonPath("$.length()", is(4)));
 	}
     @Test
 	void testFindOne() throws Exception {
