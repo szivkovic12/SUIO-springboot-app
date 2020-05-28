@@ -1,11 +1,13 @@
 package hr.tvz.suio.app.web;
 
 import static org.hamcrest.CoreMatchers.is;
-
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.user;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -16,6 +18,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
@@ -87,5 +90,34 @@ class TypeRestControllerTest {
 				.contentType(MediaType.APPLICATION_JSON))
 		.andExpect(status().isOk());
 	}
+	
+	@Test
+    void testPutType() throws Exception {
+    	Type type = new Type();
+    	type.setId((long)1);
+    	type.setName("Mobitel");
+  	
+    	this.mockMvc.perform(put("/type/update/2")
+    			.with(user("admin")
+    					.password("test").
+    					roles("ADMIN"))
+    			.with(csrf()
+    					)
+    			.content(objectMapper.writeValueAsString(type))
+    			.contentType(MediaType.APPLICATION_JSON))
+    	.andExpect(status().isOk());
+    }
+	
+	@Test
+	void testDeleteById() throws Exception {
+	   MvcResult deleted = this.mockMvc.perform(delete("/type/delete/3")
+	    						.with(user("admin")
+	    						.password("test")
+	    						.roles("ADMIN"))
+	    						.with(csrf())
+	    						)
+	    .andReturn();
+	    assertEquals(200, deleted.getResponse().getStatus());
+	    }
 
 }
