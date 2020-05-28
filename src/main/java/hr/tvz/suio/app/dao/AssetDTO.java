@@ -27,5 +27,4 @@ public class AssetDTO {
 		this.status=status;
 		this.dateOfDisposal=dateOfDisposal;
 	}
-	
 }
