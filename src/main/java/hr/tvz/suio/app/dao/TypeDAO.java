@@ -22,5 +22,4 @@ public interface TypeDAO extends JpaRepository<Type, Long>{
 		@Modifying
 		@Query("update Type e set e.name = ?1 where e.id = ?2")
 		void updateTypeById(String name, Long id);
-
 }

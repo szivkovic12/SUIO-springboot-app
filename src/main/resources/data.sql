@@ -27,6 +27,12 @@ values(1,'korisnik');
 insert into asset(id,name,serial_number,product_number,type_id,date_of_purchase, inventory_number,status,date_of_disposal)
 values(1,'LENOVO','123456','654321', 1, NOW(),'111554','1', NOW());
 
+insert into asset(id,name,serial_number,product_number,type_id,date_of_purchase, inventory_number,status,date_of_disposal)
+values(2,'HP','7890','6432321', 2, NOW(),'21111554','1', NOW());
+
+insert into asset(id,name,serial_number,product_number,type_id,date_of_purchase, inventory_number,status,date_of_disposal)
+values(3,'HP','43562456','6432321', 3, NOW(),'212311554','1', NOW());
+
 insert into type(id,name)
 values(1,'Laptop');
 insert into type(id,name)
